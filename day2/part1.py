@@ -2,18 +2,17 @@ POINTS_FOR_WIN = 6
 POINTS_FOR_DRAW = 3
 POINTS_FOR_LOSS = 0
 
-PLAYER1_ROCK = "A"
-PLAYER1_PAPER = "B"
-PLAYER1_SCISSORS = "C"
+ROCK = "rock"
+PAPER = "paper"
+SCISSORS = "scissors"
 
-PLAYER2_ROCK = "X"
-PLAYER2_PAPER = "Y"
-PLAYER2_SCISSORS = "Z"
+PLAYER1_SHAPE_MAP = {"A": ROCK, "B": PAPER, "C": SCISSORS}
+PLAYER2_SHAPE_MAP = {"X": ROCK, "Y": PAPER, "Z": SCISSORS}
 
 SHAPE_POINTS = {
-    PLAYER2_ROCK: 1,
-    PLAYER2_PAPER: 2,
-    PLAYER2_SCISSORS: 3,
+    ROCK: 1,
+    PAPER: 2,
+    SCISSORS: 3,
 }
 
 
@@ -39,24 +38,20 @@ def calculate_player2_points_for_round(player1_shape, player2_shape):
 
 def is_win_for_player2(player1_shape, player2_shape):
     return (
-        (player1_shape == PLAYER1_ROCK and player2_shape == PLAYER2_PAPER)
-        or (player1_shape == PLAYER1_PAPER and player2_shape == PLAYER2_SCISSORS)
-        or (player1_shape == PLAYER1_SCISSORS and player2_shape == PLAYER2_ROCK)
+        (player1_shape == ROCK and player2_shape == PAPER)
+        or (player1_shape == PAPER and player2_shape == SCISSORS)
+        or (player1_shape == SCISSORS and player2_shape == ROCK)
     )
 
 
 def is_draw(player1_shape, player2_shape):
-    return (
-        (player1_shape == PLAYER1_ROCK and player2_shape == PLAYER2_ROCK)
-        or (player1_shape == PLAYER1_PAPER and player2_shape == PLAYER2_PAPER)
-        or (player1_shape == PLAYER1_SCISSORS and player2_shape == PLAYER2_SCISSORS)
-    )
+    return player1_shape == player2_shape
 
 
 def generate_rounds():
     for line in generate_input_lines():
         player1_shape, player2_shape = line.split()
-        yield player1_shape, player2_shape
+        yield PLAYER1_SHAPE_MAP[player1_shape], PLAYER2_SHAPE_MAP[player2_shape]
 
 
 def generate_input_lines():
