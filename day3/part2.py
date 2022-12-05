@@ -24,8 +24,6 @@ def generate_elf_groups():
     except StopIteration:
         pass
 
-    # for contents in generate_unique_rucksack_contents():
-
 
 def generate_unique_rucksack_contents():
     for line in generate_input_lines():
