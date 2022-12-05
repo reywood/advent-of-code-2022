@@ -1,3 +1,5 @@
+from os.path import dirname, join
+
 ROCK = "A"
 PAPER = "B"
 SCISSORS = "C"
@@ -61,7 +63,7 @@ def generate_rounds():
 
 
 def generate_input_lines():
-    with open("input.txt", "r") as f:
+    with open(join(dirname(__file__), "input.txt"), "r") as f:
         for line in f:
             yield line.strip()
 
