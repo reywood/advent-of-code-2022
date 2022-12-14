@@ -50,6 +50,7 @@ def move_tail(knot_positions: List[Tuple[int, int]]):
     for i, position in enumerate(knot_positions[1:], 1):
         knot_positions[i] = move_trailing_knot(last_knot_moved, position)
         last_knot_moved = knot_positions[i]
+    return last_knot_moved
 
 
 def move_trailing_knot(
